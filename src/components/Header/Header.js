@@ -57,7 +57,7 @@ function Header({ isLoggedIn, openMenu }) {
     );
   }
   return (
-    <header className="header">
+    <header className={`header ${location.pathname !== "/" ? "header_white" : ""}`}>
       <div className="header__content">
       <Link className="header__link" to="/"><img className="header__logo" src={headerlogo} alt="Логотип" /></Link>
         {isLoggedIn ? (
