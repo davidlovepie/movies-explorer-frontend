@@ -1,0 +1,179 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.register__container {
+  margin: auto;
+  width: 396px;
+  position: relative;
+  background: #fff;
+}
+
+.register__logo {
+  margin-bottom: 40px;
+}
+
+.register__title {
+  margin-bottom: 40px;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.register__input-name {
+  margin-bottom: 5px;
+  color: #A0A0A0;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__info {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.register__input {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21px;
+  color: #000000;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  max-width: 358px;
+  min-height: 30px;
+  outline: none;
+  padding: 0;
+
+}
+
+.register__input-error {
+  height: 24px;
+  margin-bottom: 24px;
+  color: #ffffff;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__input-error:last-of-type {
+  margin-bottom: 0px;
+}
+
+.register__input-error_active {
+  color: #FF3055;
+}
+
+.register__submit {
+  width: 396px;
+  height: 45px;
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  background: #3456F3;
+  margin-top: 134px;
+  margin-bottom: 16px;
+}
+
+.register__submit:hover {
+  border-radius: 3px;
+  opacity: 0.8;
+  background: #3456F3;
+  cursor: pointer;
+}
+
+.register__small-text {
+  color: #A0A0A0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.register__smaller-text {
+  text-decoration: none;
+  color: #3456F3;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.register__smaller-text:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .register__container {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+    align-items: center;
+    width: 260px;
+  }
+
+  .register__form {
+    width: 100%;
+  }
+
+  .register__submit {
+    width: 260px;
+    margin-top: 208px;
+  }
+
+  .register {
+    align-items: normal;
+  }
+
+  .register__logo {
+    margin-bottom: 50px;
+  }
+
+  .register__title {
+    margin-bottom: 80px;
+  }
+
+  .register__input-error {
+
+    margin: 0px;
+
+  }
+
+  .register__small-text {
+    font-size: 12px;
+  }
+
+  .register__smaller-text {
+
+    font-size: 12px;
+
+  }
+}

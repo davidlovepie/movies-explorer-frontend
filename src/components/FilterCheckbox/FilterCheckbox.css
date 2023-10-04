@@ -1,0 +1,27 @@
+.filtercheckbox {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.filtercheckbox__checkbox {
+  display: none;
+}
+
+.filtercheckbox__checkbox:checked + div {
+  background-image: url(../../images/checkbox.svg); 
+}
+
+.filtercheckbox__image {
+  width: 36px; 
+  height: 20px;
+  background-image: url(../../images/checkbox-checked.svg); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  cursor: pointer; 
+  margin-right: 10px;
+}
+
+.filtercheckbox__name {
+
+}
