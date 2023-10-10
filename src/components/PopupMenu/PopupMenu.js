@@ -14,7 +14,7 @@ export const PopupMenu = ({ closeMenu }) => {
           <Link to="/profile" className="popup-menu__profile">
             Аккаунт
             <div className="popup-menu__profile_circle">
-              <img className="popup-menu__profile_logo" src={profilelogo} alt="Profile Logo" />
+              <img className="popup-menu__profile_logo" src={profilelogo} alt="Логотип" />
             </div>
           </Link>
         </div>

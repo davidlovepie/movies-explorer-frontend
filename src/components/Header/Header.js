@@ -41,16 +41,16 @@ function Header({ isLoggedIn, openMenu }) {
               </Link>
             </>
           ) : (
-            <div className="header__authorization">
+            <nav className="header__authorization">
               <Link className="header__signup" to="/signup">
                 Регистрация
               </Link>
-              <div className="header_profile_square">
+              <div className="header__profile_square">
                 <Link className="header__signin" to="/signin">
                   Войти
                 </Link>
               </div>
-            </div>
+            </nav>
           )}
         </div>
       </header>
@@ -69,7 +69,7 @@ function Header({ isLoggedIn, openMenu }) {
             <Link className="header__signup" to="/signup">
               Регистрация
             </Link>
-            <div className="header_profile_square">
+            <div className="header__profile_square">
               <Link className="header__signin" to="/signin">
                 Войти
               </Link>

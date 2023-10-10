@@ -34,18 +34,18 @@ export const Portfolio = () => {
           </div>
           <div className="portfolio__links">
             <h3 className="portfolio__links-title">Портфолио</h3>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Статичный сайт</Link>
-              <Link className="portfolio__link-arrow" to="https://davidlovepie.github.io/russian-travel/"></Link>
-            </div>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Адаптивный сайт</Link>
-              <Link className="portfolio__link-arrow" to="https://davidlovepie.github.io/russian-travel/"></Link>
-            </div>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Одностраничное приложение</Link>
-              <Link className="portfolio__link-arrow" to="https://davidlovepie.github.io/russian-travel/"></Link>
-            </div>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string" >Статичный сайт</div>
+              <div className="portfolio__link-arrow" ></div>
+            </Link>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string" >Адаптивный сайт</div>
+              <div className="portfolio__link-arrow" ></div>
+            </Link>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string">Одностраничное приложение</div>
+              <div className="portfolio__link-arrow"></div>
+            </Link>
           </div>
         </div>
       </section>
@@ -79,18 +79,18 @@ export const Portfolio = () => {
         </div>
         <div className="portfolio__links">
             <h3 className="portfolio__links-title">Портфолио</h3>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Статичный сайт</Link>
-              <Link className="portfolio__link-arrow" to=""></Link>
-            </div>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Адаптивный сайт</Link>
-              <Link className="portfolio__link-arrow" to="https://davidlovepie.github.io/russian-travel/"></Link>
-            </div>
-            <div className="portfolio__link-webs">
-              <Link className="portfolio__link-string" to="https://davidlovepie.github.io/russian-travel/">Одностраничное приложение</Link>
-              <Link className="portfolio__link-arrow" to="https://davidlovepie.github.io/russian-travel/"></Link>
-            </div>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string" >Статичный сайт</div>
+              <div className="portfolio__link-arrow" ></div>
+            </Link>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string" >Адаптивный сайт</div>
+              <div className="portfolio__link-arrow" ></div>
+            </Link>
+            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio__link-string">Одностраничное приложение</div>
+              <div className="portfolio__link-arrow"></div>
+            </Link>
           </div>
       </div>
     </section>

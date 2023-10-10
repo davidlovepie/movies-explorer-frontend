@@ -7,13 +7,13 @@ export const Profile = () => {
   const [email, setEmail] = useState(true);
   const [password, setPassword] = useState(true);
   return (
-    <div className={`profile`}>
-      <div className={`profile__container`}>
-        <h2 className="profile__title">Привет, Виталий!</h2>
+    <main className={`profile`}>
+      <section className={`profile__container`}>
+        <h1 className="profile__title">Привет, Виталий!</h1>
         <form className="profile__form" name={"form"}>
           <fieldset className="profile__info">
             <div className="profile__info-row">
-              <span className="profile__input-name">Имя</span>
+              <label className="profile__input-name">Имя</label>
               <input
                 className={`profile__input ${
                   !password && "profile__input-error_active"
@@ -29,7 +29,7 @@ export const Profile = () => {
               />
             </div>
             <div className="profile__info-row">
-              <span className="profile__input-name">E-mail</span>
+              <label className="profile__input-name">E-mail</label>
               <input
                 className={`profile__input ${
                   !email && "profile__input-error_active"
@@ -46,15 +46,15 @@ export const Profile = () => {
             </div>
           </fieldset>
           <div className="profile__buttons">
-          <button className={`profile__submit`} type="submit">
+          <button className={`profile__submit`} type="button">
           Редактировать
           </button>
-            <Link className="profile__small-text" to={"/signin"}>
+            <Link className="profile__small-text" to={"/"}>
             Выйти из аккаунта
             </Link>
             </div>
         </form>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

@@ -7,13 +7,16 @@ export const Login = () => {
   const [email, setEmail] = useState(true);
   const [password, setPassword] = useState(true);
   return (
-    <div className={`login`}>
+    <main className={`login`}>
       <div className={`login__container`}>
-        <img className="login__logo" src={headerlogo} alt="Логотип" />
-        <h2 className="login__title">Рады видеть!</h2>
+        <Link className="header__link" to="/">
+          <img className="login__logo" src={headerlogo} alt="Логотип" />
+        </Link>
+
+        <h1 className="login__title">Рады видеть!</h1>
         <form className="login__form" name={"form"}>
           <fieldset className="login__info">
-            <span className="login__input-name">E-mail</span>
+            <label className="login__input-name">E-mail</label>
             <input
               className={`login__input ${
                 !email && "login__input-error_active"
@@ -24,6 +27,7 @@ export const Login = () => {
               minLength="2"
               maxLength="40"
               onChange={(e) => setEmail(e.target.validity.valid)}
+              placeholder="E-mail"
               // onChange={handleEmail}
               // value={email || ""}
             />
@@ -34,7 +38,7 @@ export const Login = () => {
             >
               Что-то пошло не так...
             </span>
-            <span className="login__input-name">Пароль</span>
+            <label className="login__input-name">Пароль</label>
             <input
               className={`login__input ${
                 !password && "login__input-error_active"
@@ -45,6 +49,7 @@ export const Login = () => {
               minLength="2"
               maxLength="200"
               onChange={(e) => setPassword(e.target.validity.valid)}
+              placeholder="Пароль"
               // onChange={handlePassword}
               // value={password || ""}
             />
@@ -67,6 +72,6 @@ export const Login = () => {
           </p>
         </form>
       </div>
-    </div>
+    </main>
   );
 };

@@ -70,6 +70,7 @@
 
 .techs__text {
   margin-top: 26px;
+  max-width: 456px;
   color: #000;
   text-align: center;
   font-family: Inter;
@@ -83,22 +84,27 @@
 .techs__list {
   margin: 0px;
   padding: 0px;
-  margin-top: 100px;
+  margin-top: 94px;
   display: flex;
   text-align: center;
   justify-content: center;
   list-style-type: none;
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
   .techs__content {
     margin: 90px 50px;
+    margin-bottom: 85px;
   }
 
   .techs__text {
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.48px;
+  }
+
+  .techs__texts {
+    margin-top: 78px;
   }
 
   .techs__item {
@@ -110,6 +116,7 @@
 
   .techs__list {
     flex-wrap: wrap;
+    margin-top: 77px;
   }
 
 }
@@ -120,7 +127,8 @@
   }
 
   .techs__content {
-    margin: 60px 14px;
+    margin: 60px 17px;
+    margin-top: 58px;
   }
 
   .techs__title {
@@ -149,7 +157,11 @@
   }
 
   .techs__list {
-  margin-top: 50px;
+    justify-content: normal;
+    max-width: 190px;
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .techs__texts {

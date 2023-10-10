@@ -4,8 +4,8 @@ export const FilterCheckbox = () => {
   return (
     <label className="filtercheckbox">
       <input type="checkbox" className="filtercheckbox__checkbox"></input>
-      <div className="filtercheckbox__image"></div>
-      <p className="filtercheckbox__name">Короткометражки</p>
+      <span className="filtercheckbox__image"></span>
+      <span className="filtercheckbox__name">Короткометражки</span>
     </label>
   )
 };

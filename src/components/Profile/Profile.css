@@ -30,7 +30,7 @@
   margin-bottom: 96px;
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -47,7 +47,7 @@
   /* align-items: normal; */
   margin-bottom: 5px;
   color: #000;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 11px;
   font-style: normal;
   font-weight: 500;
@@ -84,7 +84,7 @@
   height: 24px;
   margin-bottom: 24px;
   color: #ffffff;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -111,7 +111,7 @@
   background: transparent;
   border: none;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -119,6 +119,8 @@
   margin-top: 220px;
   margin-bottom: 16px;
 }
+
+
 
 .profile__submit:hover {
   border-radius: 3px;
@@ -133,14 +135,14 @@
   text-decoration: none;
   color: #FF3055;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
-.profile__smaller-text:hover {
+.profile__small-text:hover {
   opacity: 0.7;
   cursor: pointer;
 }

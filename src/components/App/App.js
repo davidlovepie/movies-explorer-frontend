@@ -15,7 +15,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { PopupMenu } from "../PopupMenu/PopupMenu";
 
-function App() {
+function App() {  
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isCloseMenu, setIsCloseMenu] = useState(false);
@@ -33,11 +33,11 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/signin"}>
+              <>
                 <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
                 <Main />
-                {isLoggedIn && <Footer />}
-              </ProtectedRoute>
+                <Footer />
+                </>
             }
           ></Route>
           <Route
@@ -46,7 +46,7 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/signin"}>
                 <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
                 <Movies />
-                {isLoggedIn && <Footer />}
+         <Footer />
               </ProtectedRoute>
             }
           ></Route>
@@ -56,7 +56,7 @@ function App() {
               <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/signin"}>
                 <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
                 <SavedMovies />
-                {isLoggedIn && <Footer />}
+        <Footer />
               </ProtectedRoute>
             }
           ></Route>

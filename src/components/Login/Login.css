@@ -20,7 +20,7 @@
 .login__title {
   margin-bottom: 40px;
   color: #000;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -30,12 +30,13 @@
 .login__input-name {
   margin-bottom: 5px;
   color: #A0A0A0;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 
 .login__info {
   margin: 0;
@@ -59,11 +60,19 @@
 
 }
 
+.login__input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #bdbdbd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
 .login__input-error {
   height: 24px;
   margin-bottom: 24px;
   color: #ffffff;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -83,7 +92,7 @@
   height: 45px;
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -106,7 +115,7 @@
 .login__small-text {
   color: #A0A0A0;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -118,7 +127,7 @@
   text-decoration: none;
   color: #3456F3;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

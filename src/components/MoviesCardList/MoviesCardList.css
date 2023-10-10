@@ -1,9 +1,17 @@
+.moviescardlist {
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
 .moviescardlist__list {
+  justify-content: center;
   margin: 0;
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
   grid-template-rows: repeat(auto-fit, minmax(151px, 1fr));
   column-gap: 20px;
   row-gap: 38px;
@@ -20,7 +28,7 @@
   background: #F9F9F9;
   color: #000;
   text-align: center;
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -33,38 +41,55 @@
 }
 
 
- @media screen and (max-width:1170px){
+@media screen and (max-width:1279px) {
   .moviescardlist__list {
-    grid-template-columns: repeat(3, 270px);
-    grid-template-rows: repeat(auto-fit, minmax(190px, 1fr));
-    column-gap: 30px;
-    row-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   }
-  
+
 }
 
 
-@media screen and (max-width:900px){
+@media screen and (max-width:768px) {
   .moviescardlist__list {
-    grid-template-columns: repeat(2, 339px);
-    grid-template-rows: repeat(auto-fit, minmax(190px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(339px, 1fr));
     column-gap: 30px;
-    row-gap: 30px;
+    row-gap: 29px;
   }
-  
+
 }
 
-@media screen and (max-width:735px){
+@media screen and (max-width:767px) {
+  .moviescardlist__list {
+    column-gap: 30px;
+    row-gap: 29px;
+    width: auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+}
+
+@media screen and (max-width:320px) {
+  .moviescardlist__list {
+    column-gap: 30px;
+    row-gap: 33px;
+
+  }
+
+}
+
+
+
+/* @media screen and (max-width:320px){
   .moviescardlist__list {
     grid-template-columns: repeat(1, 300px);
     grid-template-rows: repeat(auto-fit, minmax(168px, 1fr));
     column-gap: 30px;
     row-gap: 30px;
+    width: auto;
   }
 
   .moviescardlist__more {
     width: 240px;
   }
   
-}
-
+} */

@@ -5,11 +5,11 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-      <div className="footer__description">
+      <p className="footer__description">
         Учебный проект Яндекс.Практикум х BeatFilm.
-      </div>
+      </p>
       <div className="footer__info">
-        <div className="footer__copyright">© 2023</div>
+        <p className="footer__copyright">© 2023</p>
         <div className="footer__links">
           <Link
             className="footer__link"

@@ -4,11 +4,11 @@ import { SearchForm } from '../Movies/SearchForm/SearchForm';
 
 export const SavedMovies = ()=>{
   return (
- <section className='movies'>
+ <main className='movies'>
   <div className='movies__content'>
     <SearchForm />
     <MoviesCardList initialMovies={[]}/>
   </div>
- </section>
+ </main>
   )
 };

@@ -7,21 +7,26 @@ export const Register = () => {
   const [email, setEmail] = useState(true);
   const [password, setPassword] = useState(true);
   return (
-    <div className={`register`}>
+    <main className={`register`}>
       <div className={`register__container`}>
-        <img className="register__logo" src={headerlogo} alt="Логотип" />
-        <h2 className="register__title">Добро пожаловать!</h2>
+        <Link className="header__link" to="/">
+          <img className="login__logo" src={headerlogo} alt="Логотип" />
+        </Link>
+        <h1 className="register__title">Добро пожаловать!</h1>
         <form className="register__form" name={"form"}>
           <fieldset className="register__info">
-            <span className="register__input-name">Имя</span>
+            <label className="register__input-name">Имя</label>
             <input
-              className={`register__input ${!name && 'register__input-error_active'}`}
+              className={`register__input ${
+                !name && "register__input-error_active"
+              }`}
               name="name"
               type="text"
               required
               minLength="2"
               maxLength="40"
               onChange={(e) => setName(e.target.validity.valid)}
+              placeholder="Имя"
               // onChange={handleEmail}
               // value={email || ""}
             />
@@ -33,36 +38,50 @@ export const Register = () => {
               Что-то пошло не так...
             </span>
 
-            <span className="register__input-name">E-mail</span>
+            <label className="register__input-name">E-mail</label>
             <input
-              className={`register__input ${!email && 'register__input-error_active'}`}
+              className={`register__input ${
+                !email && "register__input-error_active"
+              }`}
               name="email"
               type="email"
               required
               minLength="2"
               maxLength="40"
               onChange={(e) => setEmail(e.target.validity.valid)}
+              placeholder="E-mail"
               // onChange={handleEmail}
               // value={email || ""}
             />
-              <span className={`register__input-error ${!email && 'register__input-error_active'}`}>
-                Что-то пошло не так...
-              </span>
-            <span className="register__input-name">Пароль</span>
+            <span
+              className={`register__input-error ${
+                !email && "register__input-error_active"
+              }`}
+            >
+              Что-то пошло не так...
+            </span>
+            <label className="register__input-name">Пароль</label>
             <input
-              className={`register__input ${!password && 'register__input-error_active'}`}
+              className={`register__input ${
+                !password && "register__input-error_active"
+              }`}
               name="password"
               type="password"
               required
               minLength="2"
               maxLength="200"
               onChange={(e) => setPassword(e.target.validity.valid)}
+              placeholder="Пароль"
               // onChange={handlePassword}
               // value={password || ""}
             />
-              <span className={`register__input-error ${!password && 'register__input-error_active'}`}>
-                Что-то пошло не так...
-              </span>
+            <span
+              className={`register__input-error ${
+                !password && "register__input-error_active"
+              }`}
+            >
+              Что-то пошло не так...
+            </span>
           </fieldset>
           <button className={`register__submit`} type="submit">
             Зарегистрироваться
@@ -75,6 +94,6 @@ export const Register = () => {
           </p>
         </form>
       </div>
-    </div>
+    </main>
   );
 };
