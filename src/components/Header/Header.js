@@ -1,6 +1,6 @@
 import { Navigation } from "../Navigation/Navigation";
 import headerlogo from "./../../images/headerlogo.svg";
-import profilelogo from "./../../images/profilelogo.png";
+import profilelogo from "./../../images/profilelogo.svg";
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import useMediaQueries from "../../hooks/useMediaQueries";
@@ -14,7 +14,9 @@ function Header({ isLoggedIn, openMenu }) {
         className={`header ${location.pathname !== "/" ? "header_white" : ""}`}
       >
         <div className="header__content">
-          <Link className="header__link" to="/"><img className="header__logo" src={headerlogo} alt="Логотип" /></Link>
+          <Link className="header__link" to="/">
+            <img className="header__logo" src={headerlogo} alt="Логотип" />
+          </Link>
           {isLoggedIn ? (
             <>
               <Navigation />
@@ -45,7 +47,7 @@ function Header({ isLoggedIn, openMenu }) {
               <Link className="header__signup" to="/signup">
                 Регистрация
               </Link>
-              <div className="header__profile_square">
+              <div className="header__profile-square">
                 <Link className="header__signin" to="/signin">
                   Войти
                 </Link>
@@ -57,19 +59,23 @@ function Header({ isLoggedIn, openMenu }) {
     );
   }
   return (
-    <header className={`header ${location.pathname !== "/" ? "header_white" : ""}`}>
+    <header
+      className={`header ${location.pathname !== "/" ? "header_white" : ""}`}
+    >
       <div className="header__content">
-      <Link className="header__link" to="/"><img className="header__logo" src={headerlogo} alt="Логотип" /></Link>
+        <Link className="header__link" to="/">
+          <img className="header__logo" src={headerlogo} alt="Логотип" />
+        </Link>
         {isLoggedIn ? (
           <>
-            <button className="header__burger" onClick={openMenu}></button>
+            <button type="button" className="header__burger" onClick={openMenu}></button>
           </>
         ) : (
           <div className="header__authorization">
             <Link className="header__signup" to="/signup">
               Регистрация
             </Link>
-            <div className="header__profile_square">
+            <div className="header__profile-square">
               <Link className="header__signin" to="/signin">
                 Войти
               </Link>

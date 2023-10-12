@@ -26,6 +26,8 @@ export const Portfolio = () => {
               <Link
                 className="portfolio__link"
                 to="https://github.com/davidlovepie"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 GitHub
               </Link>
@@ -34,18 +36,68 @@ export const Portfolio = () => {
           </div>
           <div className="portfolio__links">
             <h3 className="portfolio__links-title">Портфолио</h3>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string" >Статичный сайт</div>
-              <div className="portfolio__link-arrow" ></div>
-            </Link>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string" >Адаптивный сайт</div>
-              <div className="portfolio__link-arrow" ></div>
-            </Link>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string">Одностраничное приложение</div>
-              <div className="portfolio__link-arrow"></div>
-            </Link>
+            <ul className="portfolio__link-webs">
+              <li>
+                <Link
+                  className="portfolio__link-string"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Статичный сайт
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="portfolio__link-arrow"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></Link>
+              </li>
+            </ul>
+            <ul className="portfolio__link-webs">
+              <li>
+                <Link
+                  className="portfolio__link-string"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Адаптивный сайт
+                </Link>
+              </li>
+              <li>
+              <Link
+                className="portfolio__link-arrow"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></Link>
+              </li>
+            </ul>
+            <ul
+              className="portfolio__link-webs"
+            >
+              <li>
+                <Link
+                  className="portfolio__link-string"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Одностраничное приложение
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="portfolio__link-arrow"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></Link>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -72,26 +124,78 @@ export const Portfolio = () => {
             <Link
               className="portfolio__link"
               to="https://github.com/davidlovepie"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               GitHub
             </Link>
           </div>
         </div>
         <div className="portfolio__links">
-            <h3 className="portfolio__links-title">Портфолио</h3>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string" >Статичный сайт</div>
-              <div className="portfolio__link-arrow" ></div>
-            </Link>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string" >Адаптивный сайт</div>
-              <div className="portfolio__link-arrow" ></div>
-            </Link>
-            <Link className="portfolio__link-webs" to="https://davidlovepie.github.io/russian-travel/" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio__link-string">Одностраничное приложение</div>
-              <div className="portfolio__link-arrow"></div>
-            </Link>
-          </div>
+          <h3 className="portfolio__links-title">Портфолио</h3>
+          <ul className="portfolio__link-webs">
+            <li>
+              <Link
+                className="portfolio__link-string"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Статичный сайт
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="portfolio__link-arrow"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></Link>
+            </li>
+          </ul>
+          <ul className="portfolio__link-webs">
+            <li>
+              <Link
+                className="portfolio__link-string"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Адаптивный сайт
+              </Link>
+            </li>
+            <li>
+            <Link
+              className="portfolio__link-arrow"
+              to="https://davidlovepie.github.io/russian-travel/"
+              target="_blank"
+              rel="noopener noreferrer"
+            ></Link>
+            </li>
+          </ul>
+          <ul
+            className="portfolio__link-webs"
+          >
+            <li>
+              <Link
+                className="portfolio__link-string"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Одностраничное приложение
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="portfolio__link-arrow"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );

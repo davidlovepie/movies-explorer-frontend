@@ -4,11 +4,19 @@ import { FilterCheckbox } from "../../FilterCheckbox/FilterCheckbox";
 export const SearchForm = () => {
   return (
     <section className="search-form">
-      <form className="search-form__search">
-        <label className="search-form__label">
-          <input className="search-form__input" placeholder="Фильм" required></input>
-          <button className="search-form__button">Найти</button>
+      <form class="search-form__search">
+        <div className="search-form__container">
+        <label class="search-form__label">
+          <input
+            class="search-form__input"
+            placeholder="Фильм"
+            required
+          ></input>
         </label>
+        <button type="submit" class="search-form__button">
+          Найти
+        </button>
+        </div>
         <FilterCheckbox />
       </form>
     </section>

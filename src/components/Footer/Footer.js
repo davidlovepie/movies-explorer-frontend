@@ -13,10 +13,12 @@ export const Footer = () => {
         <div className="footer__links">
           <Link
             className="footer__link"
+            target="_blank" rel="noopener noreferrer"
             to="https://practicum.yandex.ru/"
           >Яндекс.Практикум</Link>
           <Link
             className="footer__link"
+            target="_blank" rel="noopener noreferrer"
             to="https://github.com/davidlovepie"
           >Github</Link>
         </div>

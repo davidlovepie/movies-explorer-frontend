@@ -11,6 +11,7 @@
   width: 396px;
   position: relative;
   background: #fff;
+  margin-top: 68px;
 }
 
 .register__logo {
@@ -24,17 +25,17 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 21px;
 }
 
 .register__input-name {
-  margin-bottom: 5px;
   color: #A0A0A0;
   font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 21px;
+
 }
 
 .register__info {
@@ -52,10 +53,11 @@
   color: #000000;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  max-width: 358px;
-  min-height: 30px;
+  width: 100%;
+  min-height: 17px;
   outline: none;
   padding: 0;
+  padding-bottom: 10px;
 }
 
 .register__input:focus {
@@ -67,14 +69,15 @@
 }
 
 .register__input-error {
-  height: 24px;
-  margin-bottom: 24px;
+  height: 20px;
   color: #ffffff;
   font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  top: 6px;
 }
 
 .register__input-error:last-of-type {
@@ -99,7 +102,7 @@
   border: none;
   border-radius: 3px;
   background: #3456F3;
-  margin-top: 134px;
+  margin-top: 132px;
   margin-bottom: 16px;
 }
 
@@ -137,6 +140,13 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .register__container {
+    margin-top: 232px;
+  }
+}
+
+
 @media screen and (max-width: 500px) {
   .register__container {
     margin: 0px;
@@ -153,7 +163,8 @@
 
   .register__submit {
     width: 260px;
-    margin-top: 208px;
+    margin-top: 220px;
+    font-size: 12px;
   }
 
   .register {

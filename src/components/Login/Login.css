@@ -11,6 +11,7 @@
   width: 396px;
   position: relative;
   background: #fff;
+  margin-top: 70px;
 }
 
 .login__logo {
@@ -24,17 +25,17 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 22px;
+
 }
 
 .login__input-name {
-  margin-bottom: 5px;
   color: #A0A0A0;
   font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 18px;
 }
 
 
@@ -53,11 +54,11 @@
   color: #000000;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  max-width: 358px;
-  min-height: 30px;
+  width: 100%;
+  min-height: 21px;
   outline: none;
   padding: 0;
-
+  padding-bottom: 9px;
 }
 
 .login__input:focus {
@@ -69,14 +70,15 @@
 }
 
 .login__input-error {
-  height: 24px;
-  margin-bottom: 24px;
+  height: 20px;
   color: #ffffff;
   font-family: Inter, sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  top: 6px;
 }
 
 .login__input-error:last-of-type {
@@ -101,7 +103,7 @@
   border: none;
   border-radius: 3px;
   background: #3456F3;
-  margin-top: 134px;
+  margin-top: 200px;
   margin-bottom: 16px;
 }
 
@@ -139,6 +141,14 @@
   cursor: pointer;
 }
 
+
+@media screen and (max-width: 768px) {
+  .login__container {
+    margin-top: 232px;
+  }
+}
+
+
 @media screen and (max-width: 500px) {
   .login__container {
     margin: 0px;
@@ -155,7 +165,8 @@
 
   .login__submit {
     width: 260px;
-    margin-top: 208px;
+    margin-top: 288px;
+    font-size: 12px;
   }
 
   .login {

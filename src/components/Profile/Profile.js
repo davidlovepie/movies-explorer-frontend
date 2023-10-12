@@ -4,8 +4,20 @@ import "./Profile.css";
 import headerlogo from "./../../images/headerlogo.svg";
 
 export const Profile = () => {
-  const [email, setEmail] = useState(true);
-  const [password, setPassword] = useState(true);
+  const [email, setEmail] = useState('pochta@yandex.ru');
+  const [emailError, setEmailError] = useState(true);
+  const [nameError, setNameError] = useState(true);
+  const [name, setName] = useState('Виталий');
+
+  function handleName(e) {
+    setNameError(e.target.validity.valid)
+    setName(e.target.value)
+  }
+
+  function handleEmail(e) {
+    setEmailError(e.target.validity.valid)
+    setEmail(e.target.value)
+  }
   return (
     <main className={`profile`}>
       <section className={`profile__container`}>
@@ -16,43 +28,42 @@ export const Profile = () => {
               <label className="profile__input-name">Имя</label>
               <input
                 className={`profile__input ${
-                  !password && "profile__input-error_active"
+                  !nameError && "profile__input-error_active"
                 }`}
                 name="name"
                 type="text"
                 required
                 minLength="2"
                 maxLength="200"
-                onChange={(e) => setPassword(e.target.validity.valid)}
+                onChange= {handleName}
                 // onChange={handlePassword}
-                value={"Виталий"}
+                value={ name }
               />
             </div>
             <div className="profile__info-row">
               <label className="profile__input-name">E-mail</label>
               <input
                 className={`profile__input ${
-                  !email && "profile__input-error_active"
+                  !emailError && "profile__input-error_active"
                 }`}
                 name="email"
                 type="email"
                 required
                 minLength="2"
                 maxLength="40"
-                onChange={(e) => setEmail(e.target.validity.valid)}
-                // onChange={handleEmail}
-                value={"pochta@yandex.ru"}
+                onChange={handleEmail}
+                value={email}
               />
             </div>
           </fieldset>
           <div className="profile__buttons">
-          <button className={`profile__submit`} type="button">
-          Редактировать
-          </button>
+            <button className={`profile__submit`} type="button">
+              Редактировать
+            </button>
             <Link className="profile__small-text" to={"/"}>
-            Выйти из аккаунта
+              Выйти из аккаунта
             </Link>
-            </div>
+          </div>
         </form>
       </section>
     </main>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Promo.css";
-import wordslogo from '../../../images/wordslogo.png';
+import wordslogo from '../../../images/wordslogo.svg';
 import useMediaQueries from "../../../hooks/useMediaQueries";
 import { HashLink } from 'react-router-hash-link';
 
