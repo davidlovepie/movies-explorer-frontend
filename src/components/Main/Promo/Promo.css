@@ -1,0 +1,161 @@
+.promo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #073042;
+}
+
+.promo__content {
+  display: flex;
+  max-width: 1280px;
+  justify-content: space-between;
+  width: 100%;
+  margin: 75px 70px;
+}
+
+.promo__texts {
+  max-width: 640px;
+}
+
+.promo__span {
+  white-space: nowrap;
+}
+
+.promo__title {
+  margin: 0px;
+  margin-bottom: 36px;
+  color: #FFF;
+  font-feature-settings: 'clig'off, 'liga'off;
+  font-family: Inter, sans-serif;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+}
+
+.promo__subtitle {
+  margin-bottom: 146px;
+  max-width: 310px;
+  color: #FFF;
+  font-feature-settings: 'clig'off, 'liga'off;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.5;
+}
+
+.promo__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 129px;
+  height: 36px;
+  color: #FFF;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  /* 133.333% */
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+
+}
+
+.promo__link:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  }
+
+.promo__image {
+  max-width: 310px;
+  max-height: 304px;
+
+}
+
+@media screen and (max-width:768px) {
+  .promo__content {
+    margin-top: 139px;
+    margin-bottom: 76px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .promo__link {
+    margin: 0px;
+
+  }
+
+  .promo__texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+  }
+
+  .promo__title {
+    margin-top: 48px;
+    margin-bottom: 22px;
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig'off, 'liga'off;
+    font-family: Inter, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .promo__subtitle {
+    max-width: 267px;
+    text-align: center;
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .promo__content {
+    margin: 70px 10px 30px;
+
+  }
+
+  .promo__link {
+    margin: 0px;
+
+  }
+
+  .promo__texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .promo__title {
+    margin-top: 44px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 38px;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__subtitle {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .promo__image {
+    max-width: 210.001px;
+    max-height: 206px;
+
+  }
+}

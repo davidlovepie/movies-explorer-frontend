@@ -1,0 +1,38 @@
+.links {
+  margin-left: 60px;
+  height: 22px;
+
+}
+
+.links__movies {
+
+  color: #FFF;
+  text-align: right;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.links__movies:hover {
+opacity: 0.7;
+}
+
+.links__movies_black {
+  color: #000;
+}
+
+.links__movies_active {
+  border-bottom: 1px solid #000000;
+  font-weight: 900;
+}
+
+
+.links__movies:first-child {
+
+  margin-right: 16px;
+
+}
