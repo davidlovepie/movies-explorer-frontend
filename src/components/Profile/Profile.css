@@ -131,6 +131,7 @@
   line-height: normal;
   margin-top: 202px;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 
@@ -139,7 +140,6 @@
   border-radius: 3px;
   opacity: 0.8;
   background: #e9eaf0;
-  cursor: pointer;
 }
 
 
@@ -159,6 +159,11 @@
   opacity: 0.7;
   cursor: pointer;
 }
+
+.profile__submit_disabled {
+  color: #A0A0A0;
+  cursor: not-allowed;
+  }
 
 @media screen and (max-width: 768px) {
   .profile__container {

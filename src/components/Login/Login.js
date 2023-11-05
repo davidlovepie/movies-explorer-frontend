@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "./Login.css";
 import headerlogo from "./../../images/headerlogo.svg";
+import { useFormWithValidation } from "../../hooks/useForm.js";
 
-export const Login = () => {
-  const [email, setEmail] = useState(true);
-  const [password, setPassword] = useState(true);
+export const Login = ({ login }) => {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormWithValidation();
   return (
     <main className={`login`}>
       <div className={`login__container`}>
@@ -14,54 +14,67 @@ export const Login = () => {
         </Link>
 
         <h1 className="login__title">Рады видеть!</h1>
-        <form className="login__form" name={"form"}>
+        <form
+          className="login__form"
+          name={"form"}
+          onSubmit={(e) => {
+            e.preventDefault();
+            login({
+              email: values["email"],
+              password: values["password"],
+            });
+          }}
+        >
           <fieldset className="login__info">
             <label className="login__input-name">E-mail</label>
             <input
               className={`login__input ${
-                !email && "login__input-error_active"
+                !isValid && "login__input-error_active"
               }`}
               name="email"
               type="email"
               required
               minLength="2"
               maxLength="40"
-              onChange={(e) => setEmail(e.target.validity.valid)}
+              onChange={handleChange}
               placeholder="E-mail"
-              // onChange={handleEmail}
-              // value={email || ""}
+              value={values["email"] || ""}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
             <span
               className={`login__input-error ${
-                !email && "login__input-error_active"
+                !isValid && "login__input-error_active"
               }`}
             >
-              Что-то пошло не так...
+              {errors["email"]}
             </span>
             <label className="login__input-name">Пароль</label>
             <input
               className={`login__input ${
-                !password && "login__input-error_active"
+                !isValid && "login__input-error_active"
               }`}
               name="password"
               type="password"
               required
               minLength="2"
               maxLength="200"
-              onChange={(e) => setPassword(e.target.validity.valid)}
+              onChange={handleChange}
               placeholder="Пароль"
-              // onChange={handlePassword}
-              // value={password || ""}
+              value={values["password"] || ""}
             />
             <span
               className={`login__input-error ${
-                !password && "login__input-error_active"
+                !isValid && "login__input-error_active"
               }`}
             >
-              Что-то пошло не так...
+              {errors["password"]}
             </span>
           </fieldset>
-          <button className={`login__submit`} type="submit">
+          <button
+            className={`login__submit ${!isValid && "login__submit_disabled"}`}
+            disabled={!isValid}
+            type="submit"
+          >
             Войти
           </button>
           <p className="login__small-text">

@@ -87,6 +87,7 @@
 
 .login__input-error_active {
   color: #FF3055;
+  margin-bottom: 8px;
 }
 
 .login__submit {
@@ -110,7 +111,6 @@
 .login__submit:hover {
   border-radius: 3px;
   opacity: 0.8;
-  background: #3456F3;
   cursor: pointer;
 }
 
@@ -140,6 +140,12 @@
   opacity: 0.7;
   cursor: pointer;
 }
+
+.login__submit_disabled {
+  background: #E0E0E0;
+  color: #A0A0A0;
+  cursor: default;
+  }
 
 
 @media screen and (max-width: 768px) {

@@ -68,17 +68,15 @@ export const Portfolio = () => {
                 </Link>
               </li>
               <li>
-              <Link
-                className="portfolio__link-arrow"
-                to="https://davidlovepie.github.io/russian-travel/"
-                target="_blank"
-                rel="noopener noreferrer"
-              ></Link>
+                <Link
+                  className="portfolio__link-arrow"
+                  to="https://davidlovepie.github.io/russian-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></Link>
               </li>
             </ul>
-            <ul
-              className="portfolio__link-webs"
-            >
+            <ul className="portfolio__link-webs">
               <li>
                 <Link
                   className="portfolio__link-string"
@@ -165,17 +163,15 @@ export const Portfolio = () => {
               </Link>
             </li>
             <li>
-            <Link
-              className="portfolio__link-arrow"
-              to="https://davidlovepie.github.io/russian-travel/"
-              target="_blank"
-              rel="noopener noreferrer"
-            ></Link>
+              <Link
+                className="portfolio__link-arrow"
+                to="https://davidlovepie.github.io/russian-travel/"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></Link>
             </li>
           </ul>
-          <ul
-            className="portfolio__link-webs"
-          >
+          <ul className="portfolio__link-webs">
             <li>
               <Link
                 className="portfolio__link-string"

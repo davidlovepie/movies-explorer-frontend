@@ -2,15 +2,13 @@ import { Promo } from "../Main/Promo/Promo";
 import { AboutProject } from "./AboutProject/AboutProject";
 import { Techs } from "./Techs/Techs";
 import { Portfolio } from "./Portfolio/Portfolio";
-import './Main.css';
-import { useRef } from "react";
+import "./Main.css";
 
 export const Main = () => {
-  const section = useRef(0);
   return (
     <main className="main">
       <Promo />
-        <AboutProject />
+      <AboutProject />
       <Techs />
       <Portfolio />
     </main>
