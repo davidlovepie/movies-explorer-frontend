@@ -118,10 +118,12 @@ function App() {
       });
   }
   function like(card) {
+    console.log('card', card)
     setIsLoading(true);
     return mainApi
       .addLike(card)
       .then((res) => {
+        console.log("resLike", res);
         localStorage.setItem(
           "searchedSavedMovies",
           JSON.stringify([...savedMovies, res.data])
