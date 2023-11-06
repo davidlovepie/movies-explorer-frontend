@@ -123,7 +123,7 @@ function App() {
     return mainApi
       .addLike(card)
       .then((res) => {
-        console.log("resLike", res);
+   
         localStorage.setItem(
           "searchedSavedMovies",
           JSON.stringify([...savedMovies, res.data])
@@ -132,6 +132,7 @@ function App() {
           "searchedShortSavedMovies",
           JSON.stringify([...shortSavedMovies, res.data])
         );
+        setShortSavedMovies([...shortSavedMovies, res.data]);
         return res;
       })
       .catch((err) => console.log(err))
