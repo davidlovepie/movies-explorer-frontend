@@ -128,6 +128,10 @@ function App() {
           "searchedSavedMovies",
           JSON.stringify([...savedMovies, res.data])
         );
+        localStorage.setItem(
+          "searchedShortSavedMovies",
+          JSON.stringify([...shortSavedMovies, res.data])
+        );
         return res;
       })
       .catch((err) => console.log(err))
