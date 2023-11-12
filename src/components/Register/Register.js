@@ -10,7 +10,6 @@ export const Register = ({ createUser, interfaceError, setInterfaceError }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setInterfaceError("");
     if (localStorage.getItem("JWT")) {
       navigate("/", { replace: true });
     }
