@@ -1,10 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import headerlogo from "./../../images/headerlogo.svg";
 import { useFormWithValidation } from "../../hooks/useForm.js";
-export const Register = ({ createUser }) => {
+import { useEffect } from "react";
+
+export const Register = ({ createUser, interfaceError, setInterfaceError }) => {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setInterfaceError("");
+    if (localStorage.getItem("JWT")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
 
   return (
     <main className={`register`}>
@@ -25,6 +35,7 @@ export const Register = ({ createUser }) => {
             });
           }}
         >
+          <span className="register__error">{interfaceError}</span>
           <fieldset className="register__info">
             <label className="register__input-name">Имя</label>
             <input
@@ -36,7 +47,10 @@ export const Register = ({ createUser }) => {
               required
               minLength="2"
               maxLength="40"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                setInterfaceError("");
+              }}
               placeholder="Имя"
               value={values["name"] || ""}
             />
@@ -60,6 +74,7 @@ export const Register = ({ createUser }) => {
               onChange={handleChange}
               placeholder="E-mail"
               value={values["email"] || ""}
+              pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
             />
             <span
               className={`register__input-error ${

@@ -11,6 +11,8 @@ export const Movies = ({
   savedMovies,
   deleteLike,
   setSavedMovies,
+  setStatus,
+  setIsOpen,
 }) => {
   const [searchedMovies, setSearchedMovies] = useLocalStorage(
     "searchedMovies",
@@ -80,6 +82,8 @@ export const Movies = ({
             savedMovies={savedMovies}
             deleteLike={deleteLike}
             setSavedMovies={setSavedMovies}
+            setStatus={setStatus}
+            setIsOpen={setIsOpen}
           />
         )}
       </div>

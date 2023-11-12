@@ -11,15 +11,20 @@ export const SavedMovies = ({
   like,
   deleteLike,
   setSavedMovies,
+  error,
+  setError,
+  shortError,
+  setShortError,
+  setStatus,
+  setIsOpen,
 }) => {
   const [searchedMovies, setSearchedMovies] = useLocalStorage(
     "searchedSavedMovies",
     movies
   );
   const [shorts, setShorts] = useLocalStorage("searchedShortSavedMovies", []);
-  const [isShorts, setIsShorts] = useLocalStorage("checkbox", "");
-  const [error, setError] = useState("");
-
+  const [isShorts, setIsShorts] = useState(false);
+  const [saveQuery, setSaveQuery] = useState("");
   function filterMovies(searchValue) {
     const filteredShortMovies = shortMovies.filter(
       (movie) =>
@@ -30,6 +35,8 @@ export const SavedMovies = ({
       "searchedShortSavedMovies",
       JSON.stringify(filteredShortMovies)
     );
+    filteredShortMovies.length === 0 && setShortError("Ничего не найдено");
+    filteredShortMovies.length !== 0 && setShortError("");
     setShorts(filteredShortMovies);
 
     if (movies.length !== 0) {
@@ -37,10 +44,6 @@ export const SavedMovies = ({
         (movie) =>
           movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) ||
           movie.nameEN.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      localStorage.setItem(
-        "searchedSavedMovies",
-        JSON.stringify(filteredMovies)
       );
       filteredMovies.length === 0 && setError("Ничего не найдено");
       filteredMovies.length !== 0 && setError("");
@@ -52,19 +55,24 @@ export const SavedMovies = ({
   }
 
   function handleCheckBox(flag) {
-    flag
-      ? localStorage.setItem("checkbox", true)
-      : localStorage.setItem("checkbox", "");
     setIsShorts(flag);
-    handleSearch(localStorage.getItem("moviesQuery") || "");
+    handleSearch(localStorage.getItem("savedMoviesQuery") || "");
   }
 
   useEffect(() => {
-    setSearchedMovies(movies);
+    localStorage.setItem("savedMoviesQuery", "");
+  }, []);
+
+  useEffect(() => {
+    saveQuery ? filterMovies(saveQuery) : setSearchedMovies(movies);
   }, [movies]);
 
   useEffect(() => {
-    setSearchedMovies(JSON.parse(localStorage.getItem("searchedSavedMovies")));
+    saveQuery ? filterMovies(saveQuery) : setShorts(shortMovies);
+  }, [shortMovies]);
+
+  useEffect(() => {
+    setShorts(searchedMovies.filter((movie) => movie.duration < 40));
   }, [isShorts]);
   return (
     <main className="movies">
@@ -74,15 +82,34 @@ export const SavedMovies = ({
           handleCheckBox={handleCheckBox}
           flag={false}
           isShorts={isShorts}
+          saveQuery={saveQuery}
+          setSaveQuery={setSaveQuery}
         />
-        {error && <p className="movies__error">{error}</p>}
-        {!error && (
+        {!isShorts ? (
+          error ? (
+            <p className="movies__error">{error}</p>
+          ) : (
+            <MoviesCardList
+              movies={searchedMovies || movies}
+              savedMovies={savedMovies}
+              like={like}
+              deleteLike={deleteLike}
+              setSavedMovies={setSavedMovies}
+              setStatus={setStatus}
+              setIsOpen={setIsOpen}
+            />
+          )
+        ) : shortError ? (
+          <p className="movies__error">{shortError}</p>
+        ) : (
           <MoviesCardList
-            movies={isShorts ? shorts : searchedMovies}
+            movies={shorts}
             savedMovies={savedMovies}
             like={like}
             deleteLike={deleteLike}
             setSavedMovies={setSavedMovies}
+            setStatus={setStatus}
+            setIsOpen={setIsOpen}
           />
         )}
       </div>

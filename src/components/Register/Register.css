@@ -147,6 +147,19 @@
   cursor: pointer;
 }
 
+.register__form {
+  width: 100%;
+  position: relative;
+}
+
+.register__error {
+  text-align: center;
+  position: absolute;
+  font-size: 11px;
+  color: #FF004C;
+  top: 320px;
+}
+
 @media screen and (max-width: 768px) {
   .register__container {
     margin-top: 232px;
@@ -200,5 +213,11 @@
 
     font-size: 12px;
 
+
+    
+  }
+
+  .register__error {
+    top: 400px;
   }
 }

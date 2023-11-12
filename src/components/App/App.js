@@ -32,17 +32,18 @@ function App() {
   const [searchedSavedMovies, setSearchedSavedMovies] = useState([]);
   const [shortMovies, setShortMovies] = useState([]);
   const [shortSavedMovies, setShortSavedMovies] = useState([]);
-  const [preloader, setPreloader] = useState(false);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState(false);
-
+  const [error, setError] = useState("");
+  const [shortError, setShortError] = useState("");
+  const [interfaceError, setInterfaceError] = useState("");
   function onClose() {
     setIsOpen(false);
   }
 
   function updateProfile(values) {
-    setIsLoading(true)
+    setIsLoading(true);
     mainApi
       .updateProfile(values)
       .then((res) => {
@@ -52,10 +53,11 @@ function App() {
       .catch((err) => {
         setStatus(false);
         console.log(err);
+        setInterfaceError(err);
       })
       .finally(() => {
         setIsOpen(true);
-        setIsLoading(false)
+        setIsLoading(false);
       });
   }
 
@@ -63,6 +65,7 @@ function App() {
     localStorage.clear();
     setIsLoggedIn(false);
     navigate("/", { replace: true });
+    setInterfaceError("");
   }
   function getUserInfo() {
     setIsLoading(true);
@@ -95,6 +98,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setInterfaceError(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -102,28 +106,41 @@ function App() {
   }
 
   function deleteLike(id) {
-    setIsLoading(true);
     mainApi
       .deleteLike(id)
       .then((res) => {
+        const filteredSavedMovies = savedMovies.filter(
+          (movie) => movie._id !== id
+        );
+        const filteredShortSavedMovies = shortSavedMovies.filter(
+          (movie) => movie._id !== id
+        );
+        console.log("!filteredSavedMovies!", filteredSavedMovies);
         localStorage.setItem(
           "searchedSavedMovies",
-          JSON.stringify(savedMovies.filter((movie) => movie._id !== id))
+          JSON.stringify(filteredSavedMovies)
         );
+        localStorage.setItem(
+          "searchedShortSavedMovies",
+          JSON.stringify(filteredShortSavedMovies)
+        );
+        filteredSavedMovies.length === 0 && setError("Ничего не найдено");
+        filteredSavedMovies.length !== 0 && setError("");
+        filteredShortSavedMovies.length === 0 &&
+          setShortError("Ничего не найдено");
+        filteredShortSavedMovies.length !== 0 && setShortError("");
+
+        setSavedMovies(filteredSavedMovies);
+        setShortSavedMovies(filteredShortSavedMovies);
         return res;
       })
       .catch((err) => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => {});
   }
   function like(card) {
-    console.log('card', card)
-    setIsLoading(true);
     return mainApi
       .addLike(card)
       .then((res) => {
-   
         localStorage.setItem(
           "searchedSavedMovies",
           JSON.stringify([...savedMovies, res.data])
@@ -136,9 +153,7 @@ function App() {
         return res;
       })
       .catch((err) => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => {});
   }
   function openMenu() {
     setIsCloseMenu(true);
@@ -154,6 +169,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setInterfaceError(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -165,10 +181,6 @@ function App() {
       setIsLoading(false);
     }, 2000); // имитация загрузки в течение 3 секунд
   }, []);
-
-  // useEffect(() => {
-  //   getUserInfo();
-  // }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -218,10 +230,7 @@ function App() {
                 <Route
                   path="/movies"
                   element={
-                    <ProtectedRoute
-                      isLoggedIn={isLoggedIn}
-                      redirect={"/signin"}
-                    >
+                    <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/"}>
                       <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
                       <Movies
                         movies={movies}
@@ -230,6 +239,8 @@ function App() {
                         savedMovies={savedMovies}
                         deleteLike={deleteLike}
                         setSavedMovies={setSavedMovies}
+                        setStatus={setStatus}
+                        setIsOpen={setIsOpen}
                       />
                       <Footer />
                     </ProtectedRoute>
@@ -238,10 +249,7 @@ function App() {
                 <Route
                   path="/saved-movies"
                   element={
-                    <ProtectedRoute
-                      isLoggedIn={isLoggedIn}
-                      redirect={"/signin"}
-                    >
+                    <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/"}>
                       <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
                       <SavedMovies
                         savedMovies={savedMovies}
@@ -250,6 +258,12 @@ function App() {
                         setSavedMovies={setSavedMovies}
                         movies={savedMovies}
                         shortMovies={shortSavedMovies}
+                        error={error}
+                        setError={setError}
+                        shortError={shortError}
+                        setShortError={setShortError}
+                        setStatus={setStatus}
+                        setIsOpen={setIsOpen}
                       />
                       <Footer />
                     </ProtectedRoute>
@@ -258,20 +272,17 @@ function App() {
                 <Route
                   path="/profile"
                   element={
-                    <ProtectedRoute
-                      isLoggedIn={isLoggedIn}
-                      redirect={"/signin"}
-                    >
+                    <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/"}>
                       <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
-                      <Profile logOut={logOut} updateProfile={updateProfile} />
+                      <Profile logOut={logOut} updateProfile={updateProfile} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />
                     </ProtectedRoute>
                   }
                 ></Route>
                 <Route
                   path="/signup"
-                  element={<Register createUser={createUser} />}
+                  element={<Register createUser={createUser} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />}
                 ></Route>
-                <Route path="/signin" element={<Login login={login} />}></Route>
+                <Route path="/signin" element={<Login login={login} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />}></Route>
                 <Route path="*" element={<NotFound />}></Route>
               </Routes>
               {isCloseMenu && <PopupMenu closeMenu={setIsCloseMenu} />}

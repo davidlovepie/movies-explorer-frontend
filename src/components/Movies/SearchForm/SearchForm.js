@@ -7,20 +7,19 @@ export const SearchForm = ({
   handleCheckBox,
   flag,
   isShorts,
+  saveQuery,
+  setSaveQuery,
 }) => {
   const location = useLocation();
   const [searchValue, setSearchValue] = useState(
     location.pathname === "/movies"
       ? localStorage.getItem("moviesQuery")
-      : localStorage.getItem("savedMoviesQuery")
+      : localStorage.getItem("")
   );
 
   useEffect(() => {
     if (localStorage.getItem("moviesQuery") && flag) {
       setSearchValue(localStorage.getItem("moviesQuery"));
-    }
-    if (localStorage.getItem("savedMoviesQuery") && !flag) {
-      setSearchValue(localStorage.getItem("savedMoviesQuery"));
     }
   }, []);
   return (
@@ -44,6 +43,7 @@ export const SearchForm = ({
                 flag
                   ? localStorage.setItem("moviesQuery", e.target.value)
                   : localStorage.setItem("savedMoviesQuery", e.target.value);
+               location.pathname === "/saved-movies" && setSaveQuery(e.target.value);
               }}
             ></input>
           </label>

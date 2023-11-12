@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import headerlogo from "./../../images/headerlogo.svg";
 import { useFormWithValidation } from "../../hooks/useForm.js";
+import { useEffect } from "react";
 
-export const Login = ({ login }) => {
+export const Login = ({ login, interfaceError, setInterfaceError }) => {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("JWT")) {
+      navigate("/", { replace: true });
+    }
+  }, []);
   return (
     <main className={`login`}>
       <div className={`login__container`}>
         <Link className="header__link" to="/">
           <img className="login__logo" src={headerlogo} alt="Логотип" />
         </Link>
-
         <h1 className="login__title">Рады видеть!</h1>
         <form
           className="login__form"
@@ -25,6 +32,7 @@ export const Login = ({ login }) => {
             });
           }}
         >
+          <span className="login__error">{interfaceError}</span>
           <fieldset className="login__info">
             <label className="login__input-name">E-mail</label>
             <input
@@ -36,10 +44,13 @@ export const Login = ({ login }) => {
               required
               minLength="2"
               maxLength="40"
-              onChange={handleChange}
+              onChange={(e) => {
+                handleChange(e);
+                setInterfaceError('');
+              }}
               placeholder="E-mail"
               value={values["email"] || ""}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
             />
             <span
               className={`login__input-error ${

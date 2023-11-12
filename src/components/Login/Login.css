@@ -147,6 +147,20 @@
   cursor: default;
   }
 
+  .login__form {
+    width: 100%;
+    position: relative;
+  }
+
+  .login__error {
+    text-align: center;
+    position: absolute;
+    font-size: 11px;
+    color: #FF004C;
+    top: 320px;
+  }
+
+
 
 @media screen and (max-width: 768px) {
   .login__container {
@@ -168,6 +182,8 @@
   .login__form {
     width: 100%;
   }
+
+
 
   .login__submit {
     width: 260px;
@@ -201,5 +217,9 @@
 
     font-size: 12px;
 
+  }
+
+  .login__error {
+    top: 400px;
   }
 }

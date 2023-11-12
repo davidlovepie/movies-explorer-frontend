@@ -12,6 +12,8 @@ export const MoviesCardList = ({
   savedMovies,
   deleteLike,
   setSavedMovies,
+  setStatus,
+  setIsOpen,
 }) => {
   const location = useLocation();
   const [cardsToAdd, setCardsToAdd] = useState(4);
@@ -60,6 +62,8 @@ export const MoviesCardList = ({
                 deleteLike={deleteLike}
                 setSavedMovies={setSavedMovies}
                 movies={movieCard.image}
+                setStatus={setStatus}
+                setIsOpen={setIsOpen}
               />
             ))}
       </ul>

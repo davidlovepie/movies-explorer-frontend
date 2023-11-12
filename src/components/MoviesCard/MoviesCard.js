@@ -12,6 +12,8 @@ export const MoviesCard = ({
   savedMovies,
   deleteLike,
   setSavedMovies,
+  setStatus,
+  setIsOpen,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [movieId, setMovieId] = useState(null);
@@ -30,13 +32,22 @@ export const MoviesCard = ({
       setSavedMovies((prev) =>
         prev.filter((savedMovie) => savedMovie._id !== movieId)
       );
+      setIsLiked((prev) => !prev);
     } else {
-      like(card).then((res) => {
-        console.log('res', res)
-        setSavedMovies((prev) => [...prev, res.data]);
-      });
+      like(card)
+        .then((res) => {
+          if (!res.data) {
+            throw new Error(404);
+          }
+          setSavedMovies((prev) => [...prev, res.data]);
+          setIsLiked((prev) => !prev);
+        })
+        .catch((err) => {
+          console.log("catch", err);
+          setStatus(false);
+          setIsOpen(true);
+        });
     }
-    setIsLiked((prev) => !prev);
   }
 
   useEffect(() => {

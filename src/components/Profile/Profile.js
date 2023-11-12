@@ -4,7 +4,12 @@ import "./Profile.css";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useFormWithValidation } from "../../hooks/useForm.js";
 
-export const Profile = ({ logOut, updateProfile }) => {
+export const Profile = ({
+  logOut,
+  updateProfile,
+  interfaceError,
+  setInterfaceError,
+}) => {
   const user = useContext(CurrentUserContext);
   const [email, setEmail] = useState("");
 
@@ -47,6 +52,7 @@ export const Profile = ({ logOut, updateProfile }) => {
     }
     checkIsDifferent(diffName, diffEmail);
     handleChange(e);
+    setInterfaceError("");
   }
 
   useEffect(() => {
@@ -94,11 +100,12 @@ export const Profile = ({ logOut, updateProfile }) => {
                 maxLength="40"
                 onChange={checkInputs}
                 value={values.email || (isDifferentEmail ? "" : email)}
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
               />
             </div>
           </fieldset>
           <div className="profile__buttons">
+            <span className="profile__error">{interfaceError}</span>
             <button
               className={`profile__submit ${
                 (!isValid || (!isDifferentName && !isDifferentEmail)) &&
