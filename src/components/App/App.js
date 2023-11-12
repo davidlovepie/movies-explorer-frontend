@@ -115,7 +115,6 @@ function App() {
         const filteredShortSavedMovies = shortSavedMovies.filter(
           (movie) => movie._id !== id
         );
-        console.log("!filteredSavedMovies!", filteredSavedMovies);
         localStorage.setItem(
           "searchedSavedMovies",
           JSON.stringify(filteredSavedMovies)
