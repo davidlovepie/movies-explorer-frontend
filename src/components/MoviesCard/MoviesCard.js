@@ -19,34 +19,33 @@ export const MoviesCard = ({
   const [movieId, setMovieId] = useState(null);
   const location = useLocation();
 
-  function deleteSavedCard() {
-    deleteLike(card._id);
+  function handleLikeLike(res) {
+    setSavedMovies((prev) => [...prev, res.data]);
+    setIsLiked((prev) => !prev);
+  }
+
+  function handleDelelteLikeLike() {
     setSavedMovies((prev) =>
-      prev.filter((savedMovie) => savedMovie._id !== card._id)
+    prev.filter((savedMovie) => savedMovie._id !== card._id)
+  );
+  }
+
+  function deleteSavedCard() {
+    deleteLike(card._id, handleDelelteLikeLike)
+  }
+
+  function handleDeleteLike() {
+    setSavedMovies((prev) =>
+      prev.filter((savedMovie) => savedMovie._id !== movieId)
     );
+    setIsLiked((prev) => !prev);
   }
 
   function likeMovie() {
     if (isLiked) {
-      deleteLike(movieId);
-      setSavedMovies((prev) =>
-        prev.filter((savedMovie) => savedMovie._id !== movieId)
-      );
-      setIsLiked((prev) => !prev);
+      deleteLike(movieId, handleDeleteLike);
     } else {
-      like(card)
-        .then((res) => {
-          if (!res.data) {
-            throw new Error(404);
-          }
-          setSavedMovies((prev) => [...prev, res.data]);
-          setIsLiked((prev) => !prev);
-        })
-        .catch((err) => {
-          console.log("catch", err);
-          setStatus(false);
-          setIsOpen(true);
-        });
+      like(card, handleLikeLike);
     }
   }
 

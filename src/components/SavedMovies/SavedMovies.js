@@ -11,34 +11,31 @@ export const SavedMovies = ({
   like,
   deleteLike,
   setSavedMovies,
+  setStatus,
+  setIsOpen,
   error,
   setError,
   shortError,
   setShortError,
-  setStatus,
-  setIsOpen,
 }) => {
-  const [searchedMovies, setSearchedMovies] = useLocalStorage(
-    "searchedSavedMovies",
-    movies
+  const [searchedMovies, setSearchedMovies] = useState(movies);
+  const [shorts, setShorts] = useState(
+    movies.filter((movie) => movie.duration < 40)
   );
-  const [shorts, setShorts] = useLocalStorage("searchedShortSavedMovies", []);
   const [isShorts, setIsShorts] = useState(false);
   const [saveQuery, setSaveQuery] = useState("");
+
   function filterMovies(searchValue) {
-    const filteredShortMovies = shortMovies.filter(
-      (movie) =>
-        movie.nameRU.toLowerCase().includes(searchValue.toLowerCase()) ||
-        movie.nameEN.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    localStorage.setItem(
-      "searchedShortSavedMovies",
-      JSON.stringify(filteredShortMovies)
-    );
+    const filteredShortMovies = movies
+      .filter((movie) => movie.duration < 40)
+      .filter(
+        (movie) =>
+          movie.nameRU.toLowerCase().includes(saveQuery.toLowerCase()) ||
+          movie.nameEN.toLowerCase().includes(saveQuery.toLowerCase())
+      );
     filteredShortMovies.length === 0 && setShortError("Ничего не найдено");
     filteredShortMovies.length !== 0 && setShortError("");
     setShorts(filteredShortMovies);
-
     if (movies.length !== 0) {
       const filteredMovies = movies.filter(
         (movie) =>
@@ -56,12 +53,16 @@ export const SavedMovies = ({
 
   function handleCheckBox(flag) {
     setIsShorts(flag);
-    handleSearch(localStorage.getItem("savedMoviesQuery") || "");
+    handleSearch(saveQuery || "");
   }
 
   useEffect(() => {
-    localStorage.setItem("savedMoviesQuery", "");
-  }, []);
+    searchedMovies.length > 0 && setError("");
+  }, [searchedMovies]);
+
+  useEffect(() => {
+    shorts.length > 0 && setShortError("");
+  }, [shorts]);
 
   useEffect(() => {
     saveQuery ? filterMovies(saveQuery) : setSearchedMovies(movies);
@@ -74,6 +75,7 @@ export const SavedMovies = ({
   useEffect(() => {
     setShorts(searchedMovies.filter((movie) => movie.duration < 40));
   }, [isShorts]);
+
   return (
     <main className="movies">
       <div className="movies__content">

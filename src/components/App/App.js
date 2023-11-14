@@ -105,8 +105,8 @@ function App() {
       });
   }
 
-  function deleteLike(id) {
-    mainApi
+  function deleteLike(id, handleDeleteLike) {
+    return mainApi
       .deleteLike(id)
       .then((res) => {
         const filteredSavedMovies = savedMovies.filter(
@@ -114,14 +114,6 @@ function App() {
         );
         const filteredShortSavedMovies = shortSavedMovies.filter(
           (movie) => movie._id !== id
-        );
-        localStorage.setItem(
-          "searchedSavedMovies",
-          JSON.stringify(filteredSavedMovies)
-        );
-        localStorage.setItem(
-          "searchedShortSavedMovies",
-          JSON.stringify(filteredShortSavedMovies)
         );
         filteredSavedMovies.length === 0 && setError("Ничего не найдено");
         filteredSavedMovies.length !== 0 && setError("");
@@ -131,24 +123,17 @@ function App() {
 
         setSavedMovies(filteredSavedMovies);
         setShortSavedMovies(filteredShortSavedMovies);
+        handleDeleteLike();
         return res;
       })
       .catch((err) => console.log(err))
       .finally(() => {});
   }
-  function like(card) {
+  function like(card, handleLikeLike) {
     return mainApi
       .addLike(card)
       .then((res) => {
-        localStorage.setItem(
-          "searchedSavedMovies",
-          JSON.stringify([...savedMovies, res.data])
-        );
-        localStorage.setItem(
-          "searchedShortSavedMovies",
-          JSON.stringify([...shortSavedMovies, res.data])
-        );
-        setShortSavedMovies([...shortSavedMovies, res.data]);
+        handleLikeLike(res);
         return res;
       })
       .catch((err) => console.log(err))
@@ -188,6 +173,11 @@ function App() {
 
     Promise.all([
       mainApi.getMovies().then((res) => {
+        if (res.data.length === 0) {
+          setError("Ничего не найдено");
+        } else {
+          setError("");
+        }
         setSavedMovies(res.data);
         setSearchedSavedMovies(res.data);
         setShortSavedMovies(res.data.filter((movie) => movie.duration < 40));
@@ -273,15 +263,35 @@ function App() {
                   element={
                     <ProtectedRoute isLoggedIn={isLoggedIn} redirect={"/"}>
                       <Header isLoggedIn={isLoggedIn} openMenu={openMenu} />
-                      <Profile logOut={logOut} updateProfile={updateProfile} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />
+                      <Profile
+                        logOut={logOut}
+                        updateProfile={updateProfile}
+                        interfaceError={interfaceError}
+                        setInterfaceError={setInterfaceError}
+                      />
                     </ProtectedRoute>
                   }
                 ></Route>
                 <Route
                   path="/signup"
-                  element={<Register createUser={createUser} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />}
+                  element={
+                    <Register
+                      createUser={createUser}
+                      interfaceError={interfaceError}
+                      setInterfaceError={setInterfaceError}
+                    />
+                  }
                 ></Route>
-                <Route path="/signin" element={<Login login={login} interfaceError={interfaceError} setInterfaceError={setInterfaceError} />}></Route>
+                <Route
+                  path="/signin"
+                  element={
+                    <Login
+                      login={login}
+                      interfaceError={interfaceError}
+                      setInterfaceError={setInterfaceError}
+                    />
+                  }
+                ></Route>
                 <Route path="*" element={<NotFound />}></Route>
               </Routes>
               {isCloseMenu && <PopupMenu closeMenu={setIsCloseMenu} />}
