@@ -13,12 +13,11 @@ export const Movies = ({
   setSavedMovies,
   setStatus,
   setIsOpen,
-  error,
-  setError,
 }) => {
   const [searchedMovies, setSearchedMovies] = useState(JSON.parse(localStorage.getItem("searchedMovies" || [])));
   const [shorts, setShorts] = useState(JSON.parse(localStorage.getItem("searchedShortMovies" || [])));
   const [isShorts, setIsShorts] = useState(localStorage.getItem("checkbox") || "");
+  const [error, setError] = useState("");
   function filterMovies(searchValue) {
     if (searchValue) {
       const filteredShortMovies = shortMovies.filter(
