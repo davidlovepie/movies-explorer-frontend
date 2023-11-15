@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { Main } from "../Main/Main";
 import { Movies } from "../Movies/Movies";
 import { SavedMovies } from "../SavedMovies/SavedMovies";
@@ -26,7 +26,6 @@ function App() {
     localStorage.getItem("JWT") || false
   );
   const [isCloseMenu, setIsCloseMenu] = useState(false);
-  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [searchedSavedMovies, setSearchedSavedMovies] = useState([]);
@@ -127,7 +126,6 @@ function App() {
         return res;
       })
       .catch((err) => console.log(err))
-      .finally(() => {});
   }
   function like(card, handleLikeLike) {
     return mainApi
@@ -137,7 +135,6 @@ function App() {
         return res;
       })
       .catch((err) => console.log(err))
-      .finally(() => {});
   }
   function openMenu() {
     setIsCloseMenu(true);
@@ -230,6 +227,8 @@ function App() {
                         setSavedMovies={setSavedMovies}
                         setStatus={setStatus}
                         setIsOpen={setIsOpen}
+                        error={error}
+                        setError={setError}
                       />
                       <Footer />
                     </ProtectedRoute>

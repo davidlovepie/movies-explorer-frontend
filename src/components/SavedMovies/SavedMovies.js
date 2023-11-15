@@ -2,7 +2,6 @@ import "./SavedMovies.css";
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList";
 import { SearchForm } from "../Movies/SearchForm/SearchForm";
 import { useEffect, useState } from "react";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export const SavedMovies = ({
   movies,

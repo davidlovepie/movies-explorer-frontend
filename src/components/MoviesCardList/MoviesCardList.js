@@ -48,7 +48,7 @@ export const MoviesCardList = ({
             .filter((_, index) => index < cardsToAdd * getCardsToAdd(width))
             .map((movieCard) => (
               <MoviesCard
-                key={movieCard._id}
+                key={movieCard._id  || movieCard.id}
                 link={`https://api.nomoreparties.co/${
                   location.pathname === "/saved-movies"
                     ? movieCard.image

@@ -13,6 +13,8 @@ export const Movies = ({
   setSavedMovies,
   setStatus,
   setIsOpen,
+  error,
+  setError,
 }) => {
   const [searchedMovies, setSearchedMovies] = useLocalStorage(
     "searchedMovies",
@@ -20,7 +22,6 @@ export const Movies = ({
   );
   const [shorts, setShorts] = useLocalStorage("searchedShortMovies", []);
   const [isShorts, setIsShorts] = useLocalStorage("checkbox", "");
-  const [error, setError] = useState("");
 
   function filterMovies(searchValue) {
     if (searchValue) {
@@ -62,7 +63,21 @@ export const Movies = ({
   }
 
   useEffect(() => {
-    setSearchedMovies(JSON.parse(localStorage.getItem("searchedMovies")));
+    if (isShorts) {
+      setSearchedMovies((prev) => {
+        const filteredShortMovies = prev.filter((film) => film.duration < 40);
+        if (filteredShortMovies.length === 0) {
+          setError("Ничего не найдено");
+        } else {
+          setError("");
+        }
+        return filteredShortMovies;
+      });
+    } else {
+      setSearchedMovies(
+        JSON.parse(localStorage.getItem("searchedMovies")) || []
+      );
+    }
   }, [isShorts]);
 
   return (
