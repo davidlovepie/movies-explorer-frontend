@@ -1,66 +1,122 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Profile.css";
-import headerlogo from "./../../images/headerlogo.svg";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { useFormWithValidation } from "../../hooks/useForm.js";
 
-export const Profile = () => {
-  const [email, setEmail] = useState('pochta@yandex.ru');
-  const [emailError, setEmailError] = useState(true);
-  const [nameError, setNameError] = useState(true);
-  const [name, setName] = useState('Виталий');
+export const Profile = ({
+  logOut,
+  updateProfile,
+  interfaceError,
+  setInterfaceError,
+}) => {
+  const user = useContext(CurrentUserContext);
+  const [email, setEmail] = useState("");
 
-  function handleName(e) {
-    setNameError(e.target.validity.valid)
-    setName(e.target.value)
+  const [name, setName] = useState("");
+  const { values, handleChange, errors, isValid, resetForm, setIsValid } =
+    useFormWithValidation();
+  const [isDifferentName, setIsDifferentName] = useState(false);
+  const [isDifferentEmail, setIsDifferentEmail] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const userName = values.name || name;
+    const userEmail = values.email || email;
+    updateProfile({ name: userName, email: userEmail });
   }
 
-  function handleEmail(e) {
-    setEmailError(e.target.validity.valid)
-    setEmail(e.target.value)
+  function checkIsDifferent(diffName, diffEmail) {
+    if (diffName !== user.data.name && diffName !== undefined) {
+      setIsDifferentName(true);
+    } else {
+      setIsDifferentName(false);
+    }
+    if (diffEmail !== user.data.email && diffEmail !== undefined) {
+      setIsDifferentEmail(true);
+    } else {
+      setIsDifferentEmail(false);
+    }
   }
+
+  function checkInputs(e) {
+    let diffName;
+    let diffEmail;
+    if (e.target.name === "name") {
+      setName(e.target.value);
+      diffName = e.target.value || user.data.name;
+    }
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+      diffEmail = e.target.value || email;
+    }
+    checkIsDifferent(diffName, diffEmail);
+    handleChange(e);
+    setInterfaceError("");
+  }
+
+  useEffect(() => {
+    if (user) {
+      setEmail(user.data.email);
+      setName(user.data.name);
+      setIsValid(true);
+    }
+  }, [user]);
   return (
     <main className={`profile`}>
       <section className={`profile__container`}>
-        <h1 className="profile__title">Привет, Виталий!</h1>
-        <form className="profile__form" name={"form"}>
+        <h1 className="profile__title">Привет, {name}!</h1>
+        <form
+          className="profile__form"
+          name={"form"}
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <fieldset className="profile__info">
             <div className="profile__info-row">
               <label className="profile__input-name">Имя</label>
               <input
                 className={`profile__input ${
-                  !nameError && "profile__input-error_active"
+                  !isValid && "profile__input-error_active"
                 }`}
                 name="name"
                 type="text"
                 required
                 minLength="2"
                 maxLength="200"
-                onChange= {handleName}
-                // onChange={handlePassword}
-                value={ name }
+                onChange={checkInputs}
+                value={values.name || (isDifferentName ? "" : name)}
               />
             </div>
             <div className="profile__info-row">
               <label className="profile__input-name">E-mail</label>
               <input
                 className={`profile__input ${
-                  !emailError && "profile__input-error_active"
+                  !isValid && "profile__input-error_active"
                 }`}
                 name="email"
                 type="email"
                 required
                 minLength="2"
                 maxLength="40"
-                onChange={handleEmail}
-                value={email}
+                onChange={checkInputs}
+                value={values.email || (isDifferentEmail ? "" : email)}
+                pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
               />
             </div>
           </fieldset>
           <div className="profile__buttons">
-            <button className={`profile__submit`} type="button">
+            <span className="profile__error">{interfaceError}</span>
+            <button
+              className={`profile__submit ${
+                (!isValid || (!isDifferentName && !isDifferentEmail)) &&
+                "profile__submit_disabled"
+              }`}
+              disabled={!isValid || (!isDifferentName && !isDifferentEmail)}
+              type="submit"
+            >
               Редактировать
             </button>
-            <Link className="profile__small-text" to={"/"}>
+            <Link className="profile__small-text" to={"/"} onClick={logOut}>
               Выйти из аккаунта
             </Link>
           </div>

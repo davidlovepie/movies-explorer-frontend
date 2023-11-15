@@ -87,6 +87,7 @@
 
 .login__input-error_active {
   color: #FF3055;
+  margin-bottom: 8px;
 }
 
 .login__submit {
@@ -110,7 +111,6 @@
 .login__submit:hover {
   border-radius: 3px;
   opacity: 0.8;
-  background: #3456F3;
   cursor: pointer;
 }
 
@@ -141,6 +141,26 @@
   cursor: pointer;
 }
 
+.login__submit_disabled {
+  background: #E0E0E0;
+  color: #A0A0A0;
+  cursor: default;
+  }
+
+  .login__form {
+    width: 100%;
+    position: relative;
+  }
+
+  .login__error {
+    text-align: center;
+    position: absolute;
+    font-size: 11px;
+    color: #FF004C;
+    top: 320px;
+  }
+
+
 
 @media screen and (max-width: 768px) {
   .login__container {
@@ -162,6 +182,8 @@
   .login__form {
     width: 100%;
   }
+
+
 
   .login__submit {
     width: 260px;
@@ -195,5 +217,9 @@
 
     font-size: 12px;
 
+  }
+
+  .login__error {
+    top: 400px;
   }
 }

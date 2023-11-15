@@ -1,4 +1,4 @@
-import movieLink from '../images/movie1.png';
+import movieLink from "../images/movie1.png";
 
 export const initialMovies = [
   {

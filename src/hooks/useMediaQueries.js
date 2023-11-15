@@ -1,4 +1,4 @@
-import { useMemo,useState,useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 function useMediaQuery(query) {
   const mediaQuery = useMemo(() => window.matchMedia(query), [query]);
